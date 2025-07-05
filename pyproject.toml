@@ -17,6 +17,7 @@ dependencies = [
      "polars==1.9.0",
      "pydantic-settings>=2.6.1",
      "raw-data",
+     "ruff>=0.12.2",
      "sentence-transformers==2.2.2",
      "streamlit==1.28.2",
      "tensorflow-recommenders==0.7.2",
@@ -26,6 +27,7 @@ dependencies = [
 [tool.uv.workspace]
 members = [
     "recsys/raw_data",
+    "recsys/features",
 ]
 
 [tool.uv.sources]
@@ -35,3 +37,22 @@ raw-data = { workspace = true }
 dev = [
     "ruff>=0.7.2",
 ]
+
+[tool.ruff]
+line-length = 88
+lint.select = [
+    "C",  # mccabe rules
+    "F",  # pyflakes rules
+    "E",  # pycodestyle error rules
+    "W",  # pycodestyle warning rules
+    "B",  # flake8-bugbear rules
+    "I",  # isort rules
+]
+lint.ignore = [
+    "C901",  # max-complexity-10
+    "E501",  # line-too-long
+]
+
+[tool.ruff.format]
+indent-style = "space"
+quote-style = "single"
